@@ -1,120 +1,352 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>طارق ❤️ ماريا</title>
+
 <style>
-:root{--pink:#ff6b9d;--deep:#6f2348;--glass:rgba(255,255,255,.88)}
+:root{
+  --pink:#ff6b9d;
+  --deep:#6f2348;
+  --glass:rgba(255,255,255,.82);
+}
+
 *{box-sizing:border-box}
-body{margin:0;font-family:Tahoma,Arial,sans-serif;color:#632746;background:linear-gradient(135deg,#fff0f5,#ffe0eb,#fff8fb);min-height:100vh}
-header{text-align:center;padding:35px 14px 20px}
-h1{font-size:clamp(2rem,8vw,3.5rem);margin:8px 0;color:#b82f68;text-shadow:0 3px 12px #ffc2d5}
+
+body{
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  color:#632746;
+  background:linear-gradient(135deg,#fff0f5,#ffe0eb,#fff8fb);
+  min-height:100vh;
+}
+
+/* خلفية الذكريات المتحركة */
+.heart-bg{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+  isolation:isolate;
+}
+
+.heartphoto{
+  position:absolute;
+  width:clamp(52px,13vw,92px);
+  height:clamp(65px,16vw,112px);
+  object-fit:cover;
+  border-radius:12px;
+  border:3px solid rgba(255,255,255,.75);
+  box-shadow:0 5px 20px rgba(130,35,75,.12);
+  opacity:.25;
+  animation:memoryFloat 15s ease-in-out infinite alternate;
+  will-change:transform;
+}
+
+.heartphoto:nth-child(2){
+  animation-duration:19s;
+}
+
+.heartphoto:nth-child(3){
+  animation-duration:17s;
+}
+
+.heartphoto:nth-child(4){
+  animation-duration:21s;
+}
+
+@keyframes memoryFloat{
+  0%{
+    transform:translate3d(0,0,0) rotate(-7deg);
+  }
+  50%{
+    transform:translate3d(9px,-16px,0) rotate(4deg);
+  }
+  100%{
+    transform:translate3d(-7px,-27px,0) rotate(-3deg);
+  }
+}
+
+.heartemoji{
+  position:absolute;
+  color:#f58ab0;
+  opacity:.2;
+  font-size:24px;
+  animation:float 7s ease-in-out infinite;
+}
+
+@keyframes float{
+  50%{
+    transform:translateY(-10px) rotate(8deg);
+  }
+}
+
+/* المحتوى فوق الصور */
+header,nav,main,footer{
+  position:relative;
+  z-index:1;
+}
+
+header{
+  text-align:center;
+  padding:35px 14px 20px;
+}
+
+h1{
+  font-size:clamp(2rem,8vw,3.5rem);
+  margin:8px 0;
+  color:#b82f68;
+  text-shadow:0 3px 12px #ffc2d5;
+}
+
 header p{margin:8px}
-.counter{display:inline-block;background:#fff9;padding:12px 18px;border-radius:18px;box-shadow:0 5px 18px #d65b8822}
-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:10px}
-button,.navbtn{font:inherit;border:0;border-radius:14px;padding:11px 14px;background:#d94d83;color:white;cursor:pointer;box-shadow:0 4px 10px #8d245022}
+
+.counter{
+  display:inline-block;
+  background:rgba(255,255,255,.85);
+  padding:12px 18px;
+  border-radius:18px;
+  box-shadow:0 5px 18px #d65b8822;
+}
+
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  padding:10px;
+}
+
+button,.navbtn{
+  font:inherit;
+  border:0;
+  border-radius:14px;
+  padding:11px 14px;
+  background:#d94d83;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 4px 10px #8d245022;
+}
+
 button:hover{filter:brightness(1.05)}
-.navbtn{background:#fff;color:#a82e63;border:1px solid #ffd0e0}
-.page{display:none;max-width:850px;margin:10px auto;padding:16px}
+
+.navbtn{
+  background:#fff;
+  color:#a82e63;
+  border:1px solid #ffd0e0;
+}
+
+.page{
+  display:none;
+  max-width:850px;
+  margin:10px auto;
+  padding:16px;
+}
+
 .page.active{display:block}
-.card{background:var(--glass);border:1px solid #ffd0e0;border-radius:22px;padding:20px;margin:14px 0;box-shadow:0 8px 28px #a92b6012;backdrop-filter:blur(5px)}
-h2{color:#ba376c;margin-top:0}
-.storytext{font-size:1.08rem;line-height:2;white-space:pre-line}
+
+.card{
+  background:var(--glass);
+  border:1px solid #ffd0e0;
+  border-radius:22px;
+  padding:20px;
+  margin:14px 0;
+  box-shadow:0 8px 28px #a92b6012;
+  backdrop-filter:blur(7px);
+  -webkit-backdrop-filter:blur(7px);
+}
+
+h2{
+  color:#ba376c;
+  margin-top:0;
+}
+
+.storytext{
+  font-size:1.08rem;
+  line-height:2;
+  white-space:pre-line;
+}
+
 .muted{color:#9b6680}
-.row{display:flex;flex-wrap:wrap;gap:10px}
-.row button{flex:1;min-width:110px}
-.choice{display:block;width:100%;margin:8px 0;text-align:right;background:#fff0f6;color:#76294c;border:1px solid #f8b9d0;box-shadow:none}
+
+.row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.row button{
+  flex:1;
+  min-width:110px;
+}
+
+.choice{
+  display:block;
+  width:100%;
+  margin:8px 0;
+  text-align:right;
+  background:#fff0f6;
+  color:#76294c;
+  border:1px solid #f8b9d0;
+  box-shadow:none;
+}
+
 .choice:hover{background:#ffdce9}
-.result{background:#fff0f6;border-radius:14px;padding:14px;margin-top:12px;line-height:1.9}
-.score-card{background:linear-gradient(135deg,#ffe1ed,#fff7fb);border:2px solid #f5a8c6;border-radius:20px;padding:18px;text-align:center;margin:14px 0}
-.score-percent{font-size:2.5rem;font-weight:bold;color:#bd2867;line-height:1.3}
-.score-summary{font-size:1.05rem;font-weight:bold;color:#7c2850}
-.answer-list{text-align:right;background:#fff;border-radius:14px;padding:14px;margin-top:12px;line-height:2}
-.heart-bg{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:-1}
-.heartphoto{position:absolute;width:75px;height:75px;object-fit:cover;opacity:.23;clip-path:path('M 37 68 C 30 59 4 43 5 24 C 6 7 27 2 37 19 C 48 2 69 7 70 24 C 71 43 45 59 37 68 Z');filter:saturate(.8)}
-.heartemoji{position:absolute;color:#f58ab0;opacity:.25;font-size:24px;animation:float 6s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-10px) rotate(8deg)}}
-.boxgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
-.box{padding:20px 8px;background:#fff0f6;color:#a82e63;border:1px solid #f8b9d0}
+
+.result{
+  background:#fff0f6;
+  border-radius:14px;
+  padding:14px;
+  margin-top:12px;
+  line-height:1.9;
+}
+
+.score-card{
+  background:linear-gradient(135deg,#ffe1ed,#fff7fb);
+  border:2px solid #f5a8c6;
+  border-radius:20px;
+  padding:18px;
+  text-align:center;
+  margin:14px 0;
+}
+
+.score-percent{
+  font-size:2.5rem;
+  font-weight:bold;
+  color:#bd2867;
+  line-height:1.3;
+}
+
+.score-summary{
+  font-size:1.05rem;
+  font-weight:bold;
+  color:#7c2850;
+}
+
+.answer-list{
+  text-align:right;
+  background:#fff;
+  border-radius:14px;
+  padding:14px;
+  margin-top:12px;
+  line-height:2;
+}
+
+.boxgrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:10px;
+}
+
+.box{
+  padding:20px 8px;
+  background:#fff0f6;
+  color:#a82e63;
+  border:1px solid #f8b9d0;
+}
+
 .small{font-size:.9rem}
+
 .hidden{display:none!important}
-footer{text-align:center;padding:30px;color:#b85b82}
-.photo-note{font-size:.9rem;color:#96617b}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#b85b82;
+}
+
+.photo-note{
+  font-size:.9rem;
+  color:#96617b;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .heartphoto,.heartemoji{
+    animation:none;
+  }
+
+  *{
+    scroll-behavior:auto!important;
+  }
+}
 </style>
 </head>
+
 <body>
 
 <div class="heart-bg" id="heartBg"></div>
 
 <header>
-<div style="font-size:2rem">💗 🥹 💗</div>
-<h1>طارق ❤️ ماريا</h1>
-<p>حكايتنا الصغيرة، وأحلى شي صار بحياتي</p>
-<div class="counter" id="counter">كل يوم معك إلو معنى ❤️</div>
+  <div style="font-size:2rem">💗 🥹 💗</div>
+  <h1>طارق ❤️ ماريا</h1>
+  <p>حكايتنا الصغيرة، وأحلى شي صار بحياتي</p>
+  <div class="counter" id="counter">كل يوم معك إلو معنى ❤️</div>
 </header>
 
 <nav>
-<button class="navbtn" onclick="showPage('home')">الرئيسية 🏠</button>
-<button class="navbtn" onclick="showPage('story')">قصتنا 📖</button>
-<button class="navbtn" onclick="showPage('daily')">رسالة اليوم 💌</button>
-<button class="navbtn" onclick="showPage('open')">افتحيني لما... 💗</button>
-<button class="navbtn" onclick="showPage('games')">ألعابنا 🎮</button>
+  <button class="navbtn" onclick="showPage('home')">الرئيسية 🏠</button>
+  <button class="navbtn" onclick="showPage('story')">قصتنا 📖</button>
+  <button class="navbtn" onclick="showPage('daily')">رسالة اليوم 💌</button>
+  <button class="navbtn" onclick="showPage('open')">افتحيني لما... 💗</button>
+  <button class="navbtn" onclick="showPage('games')">ألعابنا 🎮</button>
 </nav>
 
 <main>
 
 <section class="page active" id="home">
-<div class="card" style="text-align:center">
-<h2>أهلاً بماريتي ❤️</h2>
-<p class="storytext">هالمكان إلك وإلي، حطّيت فيه شوية من حكايتنا وضحكتنا وذكرياتنا.
+  <div class="card" style="text-align:center">
+    <h2>أهلاً بماريتي ❤️</h2>
+    <p class="storytext">هالمكان إلك وإلي، حطّيت فيه شوية من حكايتنا وضحكتنا وذكرياتنا.
 كل ما تفتحيه تذكّري إنك غالية عليي كتير يا روحي 🥹❤️</p>
-<p class="photo-note">الصور الصغيرة بالخلفية بتظهر بعد رفع ملفات صوركم للموقع.</p>
-<button onclick="showPage('games')">يلا نلعب سوا 🎮</button>
-</div>
+    <p class="photo-note">ذكرياتنا الصغيرة عم تطوف حوالي حكايتنا ❤️</p>
+    <button onclick="showPage('games')">يلا نلعب سوا 🎮</button>
+  </div>
 </section>
 
 <section class="page" id="story">
-<div class="card">
-<h2>قصتنا من البداية 📖❤️</h2>
-<p class="muted">كل صفحة لحالها، متل ما عشناها.</p>
-<div id="storyContent" class="storytext"></div>
-<div class="row" style="margin-top:18px">
-<button onclick="storyMove(-1)">السابق</button>
-<button onclick="storyMove(1)">الصفحة التالية ❤️</button>
-</div>
-<p id="storyNum" class="muted"></p>
-</div>
+  <div class="card">
+    <h2>قصتنا من البداية 📖❤️</h2>
+    <p class="muted">كل صفحة لحالها، متل ما عشناها.</p>
+    <div id="storyContent" class="storytext"></div>
+    <div class="row" style="margin-top:18px">
+      <button onclick="storyMove(-1)">السابق</button>
+      <button onclick="storyMove(1)">الصفحة التالية ❤️</button>
+    </div>
+    <p id="storyNum" class="muted"></p>
+  </div>
 </section>
 
 <section class="page" id="daily">
-<div class="card">
-<h2>كل يوم إلك رسالة 💌</h2>
-<p id="dailyMessage" class="storytext"></p>
-<p class="muted small">رسالة اليوم بتتغير حسب التاريخ ❤️</p>
-</div>
+  <div class="card">
+    <h2>كل يوم إلك رسالة 💌</h2>
+    <p id="dailyMessage" class="storytext"></p>
+    <p class="muted small">رسالة اليوم بتتغير حسب التاريخ ❤️</p>
+  </div>
 </section>
 
 <section class="page" id="open">
-<div class="card">
-<h2>افتحيني لما... 💗</h2>
-<p>اختاري اللي حاسّة فيه يا ماريتي.</p>
-<div id="openButtons" class="row"></div>
-<div id="openMessage" class="result hidden"></div>
-</div>
+  <div class="card">
+    <h2>افتحيني لما... 💗</h2>
+    <p>اختاري اللي حاسّة فيه يا ماريتي.</p>
+    <div id="openButtons" class="row"></div>
+    <div id="openMessage" class="result hidden"></div>
+  </div>
 </section>
 
 <section class="page" id="games">
-<div class="card">
-<h2>ألعابنا سوا 🎮❤️</h2>
-<div class="row">
-<button onclick="startMemory()">اختبر ذاكرتك بعلاقتنا</button>
-<button onclick="startKnow()">قديش بتعرفيني؟</button>
-<button onclick="startWho()">مين فينا؟</button>
-<button onclick="startSurprise()">اختاري رقم واكتشفي المفاجأة</button>
-<button onclick="startKeys()">اختاري المفتاح 🔑</button>
-</div>
-</div>
-<div id="gameArea"></div>
+  <div class="card">
+    <h2>ألعابنا سوا 🎮❤️</h2>
+    <div class="row">
+      <button onclick="startMemory()">اختبر ذاكرتك بعلاقتنا</button>
+      <button onclick="startKnow()">قديش بتعرفيني؟</button>
+      <button onclick="startWho()">مين فينا؟</button>
+      <button onclick="startSurprise()">اختاري رقم واكتشفي المفاجأة</button>
+      <button onclick="startKeys()">اختاري المفتاح 🔑</button>
+    </div>
+  </div>
+  <div id="gameArea"></div>
 </section>
 
 </main>
@@ -122,70 +354,97 @@ footer{text-align:center;padding:30px;color:#b85b82}
 <footer>طارق ❤️ ماريا — حكايتنا لسا عم تكبر</footer>
 
 <script>
-// تاريخ بداية علاقتكم بصيغة YYYY-MM-DD
-const START_DATE = '2026-05-16';
+const START_DATE='2026-05-16';
 
-// مسارات الصور
-const PHOTOS = ['photos/us1.jpg','photos/us2.jpg','photos/us3.jpg'];
+/* أسماء الصور كما هي محفوظة في جذر المستودع */
+const PHOTOS=[
+  'D7A9D641-32F4-4C4F-875C-625B5C4C7E57.png',
+  '5F2936BF-3672-44E3-8C7A-1DF487A917A6.png',
+  'AA03A586-57DD-482A-B535-C63F33454E9F.jpeg',
+  '891e1155-4ad3-43cd-83a6-3783593b46b5.jpeg'
+];
 
 const $=id=>document.getElementById(id);
 
 function showPage(id){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-$(id).classList.add('active');
-if(id==='daily')daily();
-if(id==='open')renderOpen();
-window.scrollTo({top:0,behavior:'smooth'});
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  $(id).classList.add('active');
+
+  if(id==='daily')daily();
+  if(id==='open')renderOpen();
+
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// عداد الأيام والساعات والدقائق والثواني
+/* عداد الأيام والساعات والدقائق والثواني */
 function updateCounter(){
-let start=new Date(START_DATE+'T00:00:00');
+  let start=new Date(START_DATE+'T00:00:00');
 
-if(isNaN(start.getTime())){
-$('counter').textContent='كل يوم معك إلو معنى ❤️';
-return;
-}
+  if(isNaN(start.getTime())){
+    $('counter').textContent='كل يوم معك إلو معنى ❤️';
+    return;
+  }
 
-let diff=Math.max(0,Date.now()-start.getTime());
-let days=Math.floor(diff/86400000);
-let hours=Math.floor((diff%86400000)/3600000);
-let minutes=Math.floor((diff%3600000)/60000);
-let seconds=Math.floor((diff%60000)/1000);
+  let diff=Math.max(0,Date.now()-start.getTime());
+  let days=Math.floor(diff/86400000);
+  let hours=Math.floor((diff%86400000)/3600000);
+  let minutes=Math.floor((diff%3600000)/60000);
+  let seconds=Math.floor((diff%60000)/1000);
 
-$('counter').innerHTML=
-`صارلنا سوا ❤️<br>
-<strong>${days}</strong> يوم ·
-<strong>${hours}</strong> ساعة ·
-<strong>${minutes}</strong> دقيقة ·
-<strong>${seconds}</strong> ثانية`;
+  $('counter').innerHTML=
+    `صارلنا سوا ❤️<br>
+    <strong>${days}</strong> يوم ·
+    <strong>${hours}</strong> ساعة ·
+    <strong>${minutes}</strong> دقيقة ·
+    <strong>${seconds}</strong> ثانية`;
 }
 
 updateCounter();
 setInterval(updateCounter,1000);
 
+/* إنشاء خلفية الصور المتحركة */
 function makeBackground(){
-let bg=$('heartBg');
+  const bg=$('heartBg');
 
-PHOTOS.forEach((src,i)=>{
-let im=document.createElement('img');
-im.src=src;
-im.className='heartphoto';
-im.style.left=(5+(i*29)%86)+'%';
-im.style.top=(8+(i*23)%78)+'%';
-im.onerror=()=>im.remove();
-bg.appendChild(im);
-});
+  const positions=[
+    {left:'4%',top:'13%'},
+    {left:'79%',top:'19%'},
+    {left:'8%',top:'68%'},
+    {left:'80%',top:'73%'}
+  ];
 
-for(let i=0;i<12;i++){
-let h=document.createElement('span');
-h.className='heartemoji';
-h.textContent='♥';
-h.style.left=(Math.random()*95)+'%';
-h.style.top=(Math.random()*95)+'%';
-h.style.animationDelay=(Math.random()*5)+'s';
-bg.appendChild(h);
-}
+  PHOTOS.forEach((src,i)=>{
+    const im=document.createElement('img');
+
+    im.src=src;
+    im.alt='';
+    im.className='heartphoto';
+    im.loading='eager';
+    im.decoding='async';
+
+    im.style.left=positions[i].left;
+    im.style.top=positions[i].top;
+    im.style.animationDelay=(-i*2.7)+'s';
+
+    im.onerror=()=>{
+      console.error('تعذر تحميل الصورة:',src);
+      im.remove();
+    };
+
+    bg.appendChild(im);
+  });
+
+  for(let i=0;i<10;i++){
+    const h=document.createElement('span');
+
+    h.className='heartemoji';
+    h.textContent='♥';
+    h.style.left=(Math.random()*95)+'%';
+    h.style.top=(Math.random()*95)+'%';
+    h.style.animationDelay=(Math.random()*5)+'s';
+
+    bg.appendChild(h);
+  }
 }
 
 makeBackground();
@@ -205,19 +464,19 @@ const story=[
 let storyIndex=0;
 
 function renderStory(){
-$('storyContent').textContent=
-story[storyIndex][0]+'\n\n'+story[storyIndex][1];
-$('storyNum').textContent=`الصفحة ${storyIndex+1} من ${story.length}`;
+  $('storyContent').textContent=
+    story[storyIndex][0]+'\n\n'+story[storyIndex][1];
+
+  $('storyNum').textContent=`الصفحة ${storyIndex+1} من ${story.length}`;
 }
 
 function storyMove(n){
-storyIndex=Math.max(0,Math.min(story.length-1,storyIndex+n));
-renderStory();
+  storyIndex=Math.max(0,Math.min(story.length-1,storyIndex+n));
+  renderStory();
 }
 
 renderStory();
 
-// رسالة جديدة حسب اليوم
 const dailyMessages=[
 'يا ماريتي، وجودك بحياتي من أحلى الأشياء اللي صارت معي، بحبك كتيررر ❤️',
 'يا روحي، لو فيني هلأ كنت جيت لعندك وضلّيت حدك وما خليتك تشتاقي 🥹❤️',
@@ -228,14 +487,15 @@ const dailyMessages=[
 ];
 
 function daily(){
-let d=new Date();
-let n=Math.floor(
-(new Date(d.getFullYear(),d.getMonth(),d.getDate())-
-new Date(2024,0,1))/86400000
-);
+  let d=new Date();
 
-$('dailyMessage').textContent=
-dailyMessages[((n%dailyMessages.length)+dailyMessages.length)%dailyMessages.length];
+  let n=Math.floor(
+    (new Date(d.getFullYear(),d.getMonth(),d.getDate())-
+    new Date(2024,0,1))/86400000
+  );
+
+  $('dailyMessage').textContent=
+    dailyMessages[((n%dailyMessages.length)+dailyMessages.length)%dailyMessages.length];
 }
 
 const openItems=[
@@ -248,22 +508,22 @@ const openItems=[
 ];
 
 function renderOpen(){
-$('openButtons').innerHTML='';
+  $('openButtons').innerHTML='';
 
-openItems.forEach((x,i)=>{
-let b=document.createElement('button');
-b.textContent=x[0];
+  openItems.forEach((x)=>{
+    let b=document.createElement('button');
+    b.textContent=x[0];
 
-b.onclick=()=>{
-$('openMessage').classList.remove('hidden');
-$('openMessage').innerHTML='<b>'+x[0]+' ❤️</b><br>'+x[1];
-};
+    b.onclick=()=>{
+      $('openMessage').classList.remove('hidden');
+      $('openMessage').innerHTML='<b>'+x[0]+' ❤️</b><br>'+x[1];
+    };
 
-$('openButtons').appendChild(b);
-});
+    $('openButtons').appendChild(b);
+  });
 }
 
-// لعبة اختبر ذاكرتك بعلاقتنا
+/* لعبة اختبر ذاكرتك */
 const memory=[
 ['مين اعترف بالحب أول؟',['طارق','ماريا','الاثنين سوا','ولا واحد'],'طارق'],
 ['وين أول مكان التقينا فيه بعد ما رجعنا نحكي؟',['الكشك','السينما','الجامعة','ساحة السبع بحرات'],'الكشك'],
@@ -276,7 +536,6 @@ const memory=[
 ['شو أكتر ذكرى منحب نرجع نعيشها من جديد؟',['أول رسالة','السينما','أول كافيه','أول مكالمة'],'السينما']
 ];
 
-// لعبة قديش بتعرفيني
 const know=[
 ['شو أكتر صفة بتميز طارق؟',['الحنية','العصبية','الهدوء','العناد'],'الحنية'],
 ['كيف بيتصرف طارق لما يكون زعلان؟',['بيحكي فوراً','بيسكت وبيحتفظ بمشاعره','بيضحك','بيغيّر الموضوع'],'بيسكت وبيحتفظ بمشاعره'],
@@ -330,143 +589,139 @@ const whoQ=[
 const whoA=[1,1,2,2,2,1,2,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,2,1,2,1,1,1,1];
 
 function area(){
-return $('gameArea');
+  return $('gameArea');
 }
 
 function resetGame(title){
-area().innerHTML=`<div class="card"><h2>${title}</h2><div id="play"></div></div>`;
+  area().innerHTML=`<div class="card"><h2>${title}</h2><div id="play"></div></div>`;
 }
 
-// نظام النتيجة: نسبة واضحة + الإجابات الصحيحة والغلط
+/* نظام النتيجة */
 function startQuiz(title,arr){
-resetGame(title);
+  resetGame(title);
 
-let i=0;
-let score=0;
-let answers=[];
+  let i=0;
+  let score=0;
+  let answers=[];
 
-function draw(){
-const p=$('play');
+  function draw(){
+    const p=$('play');
 
-if(i>=arr.length){
-const percent=Math.round((score/arr.length)*100);
-const wrong=arr.length-score;
+    if(i>=arr.length){
+      const percent=Math.round((score/arr.length)*100);
+      const wrong=arr.length-score;
 
-p.innerHTML=`
-<h3>خلصنا! ❤️</h3>
+      p.innerHTML=`
+      <h3>خلصنا! ❤️</h3>
+      <div class="score-card">
+        <div class="score-summary">نتيجتك النهائية</div>
+        <div class="score-percent">${percent}%</div>
+        <div class="score-summary">${score} إجابة صحيحة من أصل ${arr.length}</div>
+        <div>❌ ${wrong} إجابة غلط · ✅ ${score} إجابة صح</div>
+      </div>
+      <h3>مراجعة الإجابات 💗</h3>
+      <div class="answer-list">
+      ${arr.map((q,j)=>`
+      ${j+1}. ${q[0]}<br>
+      إجابتك: <b>${answers[j]||'—'}</b><br>
+      الإجابة الصحيحة: <b>${q[2]}</b>
+      ${answers[j]===q[2]?'✅ صح':'❌ غلط'}
+      `).join('<hr>')}
+      </div>
+      <button id="retryQuiz">إعادة اللعبة</button>
+      `;
 
-<div class="score-card">
-<div class="score-summary">نتيجتك النهائية</div>
-<div class="score-percent">${percent}%</div>
-<div class="score-summary">${score} إجابة صحيحة من أصل ${arr.length}</div>
-<div>❌ ${wrong} إجابة غلط · ✅ ${score} إجابة صح</div>
-</div>
+      $('retryQuiz').addEventListener('click',()=>{
+        if(title.includes('ذاكرتك')){
+          startMemory();
+        }else{
+          startKnow();
+        }
+      });
 
-<h3>مراجعة الإجابات 💗</h3>
+      return;
+    }
 
-<div class="answer-list">
-${arr.map((q,j)=>`
-${j+1}. ${q[0]}<br>
-إجابتك: <b>${answers[j]||'—'}</b><br>
-الإجابة الصحيحة: <b>${q[2]}</b>
-${answers[j]===q[2]?'✅ صح':'❌ غلط'}
-`).join('<hr>')}
-</div>
+    const q=arr[i];
 
-<button id="retryQuiz">إعادة اللعبة</button>
-`;
+    p.innerHTML=`
+    <p>السؤال ${i+1} من ${arr.length}</p>
+    <h3>${q[0]}</h3>
+    <div id="quizChoices"></div>
+    `;
 
-$('retryQuiz').addEventListener('click',()=>{
-if(title.includes('ذاكرتك')){
-startMemory();
-}else{
-startKnow();
-}
-});
+    const choices=$('quizChoices');
 
-return;
-}
+    q[1].forEach(a=>{
+      const button=document.createElement('button');
+      button.className='choice';
+      button.textContent=a;
 
-const q=arr[i];
+      button.addEventListener('click',()=>{
+        answers[i]=a;
 
-p.innerHTML=`
-<p>السؤال ${i+1} من ${arr.length}</p>
-<h3>${q[0]}</h3>
-<div id="quizChoices"></div>
-`;
+        if(a===q[2]){
+          score++;
+        }
 
-const choices=$('quizChoices');
+        i++;
+        draw();
+      });
 
-q[1].forEach(a=>{
-const button=document.createElement('button');
-button.className='choice';
-button.textContent=a;
+      choices.appendChild(button);
+    });
+  }
 
-button.addEventListener('click',()=>{
-answers[i]=a;
-
-if(a===q[2]){
-score++;
-}
-
-i++;
-draw();
-});
-
-choices.appendChild(button);
-});
-}
-
-draw();
+  draw();
 }
 
 function startMemory(){
-startQuiz('اختبر ذاكرتك بعلاقتنا ❤️',memory);
+  startQuiz('اختبر ذاكرتك بعلاقتنا ❤️',memory);
 }
 
 function startKnow(){
-startQuiz('قديش بتعرفيني؟ 💗',know);
+  startQuiz('قديش بتعرفيني؟ 💗',know);
 }
 
-// لعبة مين فينا
+/* لعبة مين فينا */
 function startWho(){
-resetGame('مين فينا؟ ❤️');
+  resetGame('مين فينا؟ ❤️');
 
-let i=0;
-let ans=[];
+  let i=0;
+  let ans=[];
 
-function draw(){
-let p=$('play');
+  function draw(){
+    let p=$('play');
 
-if(i>=whoQ.length){
-p.innerHTML=
-'<h3>خلصتوا! شوفوا إجاباتكم ❤️</h3>'+
-whoQ.map((q,j)=>
-`${j+1}. ${q}<br>اختياركم: <b>${ans[j]===1?'طارق ❤️':'ماريا 🌸'}</b>`
-).join('<br><br>')+
-'<button onclick="startWho()">إعادة اللعبة</button>';
+    if(i>=whoQ.length){
+      p.innerHTML=
+        '<h3>خلصتوا! شوفوا إجاباتكم ❤️</h3>'+
+        whoQ.map((q,j)=>
+          `${j+1}. ${q}<br>اختياركم: <b>${ans[j]===1?'طارق ❤️':'ماريا 🌸'}</b>`
+        ).join('<br><br>')+
+        '<button onclick="startWho()">إعادة اللعبة</button>';
 
-return;
+      return;
+    }
+
+    p.innerHTML=`
+    <p>السؤال ${i+1} من ${whoQ.length}</p>
+    <h3>${whoQ[i]}</h3>
+    <button onclick="pick(1)">طارق ❤️</button>
+    <button onclick="pick(2)">ماريا 🌸</button>
+    `;
+
+    window.pick=n=>{
+      ans.push(n);
+      i++;
+      draw();
+    };
+  }
+
+  draw();
 }
 
-p.innerHTML=`
-<p>السؤال ${i+1} من ${whoQ.length}</p>
-<h3>${whoQ[i]}</h3>
-<button onclick="pick(1)">طارق ❤️</button>
-<button onclick="pick(2)">ماريا 🌸</button>
-`;
-
-window.pick=n=>{
-ans.push(n);
-i++;
-draw();
-};
-}
-
-draw();
-}
-
-// لعبة المفاجآت
+/* لعبة المفاجآت */
 const surprises=[
 'بحب بوس خدودك كتير 🥹❤️',
 'شعراتك كتير حلوين عفكرة 😭❤️',
@@ -486,25 +741,25 @@ const surprises=[
 ];
 
 function startSurprise(){
-resetGame('اختاري رقم واكتشفي المفاجأة 💌');
+  resetGame('اختاري رقم واكتشفي المفاجأة 💌');
 
-let nums=[...Array(15)].map((_,i)=>i+1).sort(()=>Math.random()-.5);
+  let nums=[...Array(15)].map((_,i)=>i+1).sort(()=>Math.random()-.5);
 
-$('play').innerHTML=
-'<p>اختاري رقم واحد، وكل رقم إلو مفاجأة مخبّاية 💗</p>'+
-'<div class="boxgrid">'+
-nums.map(n=>`<button class="box" onclick="reveal(${n})">💗 ${n}</button>`).join('')+
-'</div>'+
-'<div id="surpriseResult" class="result hidden"></div>';
+  $('play').innerHTML=
+    '<p>اختاري رقم واحد، وكل رقم إلو مفاجأة مخبّاية 💗</p>'+
+    '<div class="boxgrid">'+
+    nums.map(n=>`<button class="box" onclick="reveal(${n})">💗 ${n}</button>`).join('')+
+    '</div>'+
+    '<div id="surpriseResult" class="result hidden"></div>';
 
-window.reveal=n=>{
-let r=$('surpriseResult');
-r.classList.remove('hidden');
-r.innerHTML=`${surprises[n-1]}<br><span style="font-size:1.5rem">💗❤️💗</span>`;
-};
+  window.reveal=n=>{
+    let r=$('surpriseResult');
+    r.classList.remove('hidden');
+    r.innerHTML=`${surprises[n-1]}<br><span style="font-size:1.5rem">💗❤️💗</span>`;
+  };
 }
 
-// لعبة المفاتيح
+/* لعبة المفاتيح */
 const boxes=[
 'بحبك وبحب عيونك الحلوين وياريت ماتتركيني اني مافيني عيش بدونك ابداً وياريت تضلي جنبي عطول',
 'بعتيلي بوسة بفويسس هلققق 😚',
@@ -514,58 +769,61 @@ const boxes=[
 ];
 
 function startKeys(){
-resetGame('اختاري المفتاح 🔑');
+  resetGame('اختاري المفتاح 🔑');
 
-let order=[1,2,3,4,5].sort(()=>Math.random()-.5);
+  let order=[1,2,3,4,5].sort(()=>Math.random()-.5);
 
-$('play').innerHTML=
-'<p>كل صندوق إلو مفتاح محدد. جرّبي المفاتيح لحتى تفتحي الصندوق الصح! 🔑</p>'+
-'<div class="boxgrid">'+
-order.map(n=>`<button class="box" onclick="tryBox(${n})">🔒 صندوق ${n}</button>`).join('')+
-'</div>'+
-'<p>المفاتيح:</p>'+
-'<div class="boxgrid">'+
-[1,2,3,4,5].map(n=>`<button class="choice" onclick="tryKey(${n})">🔑 مفتاح ${n}</button>`).join('')+
-'</div>'+
-'<div id="keyResult" class="result">اختاري مفتاح وبعدين صندوق.</div>';
+  $('play').innerHTML=
+    '<p>كل صندوق إلو مفتاح محدد. جرّبي المفاتيح لحتى تفتحي الصندوق الصح! 🔑</p>'+
+    '<div class="boxgrid">'+
+    order.map(n=>`<button class="box" onclick="tryBox(${n})">🔒 صندوق ${n}</button>`).join('')+
+    '</div>'+
+    '<p>المفاتيح:</p>'+
+    '<div class="boxgrid">'+
+    [1,2,3,4,5].map(n=>`<button class="choice" onclick="tryKey(${n})">🔑 مفتاح ${n}</button>`).join('')+
+    '</div>'+
+    '<div id="keyResult" class="result">اختاري مفتاح وبعدين صندوق.</div>';
 
-let key=null;
-let opened={};
+  let key=null;
+  let opened={};
 
-window.tryKey=n=>{
-key=n;
-$('keyResult').textContent='اخترتي المفتاح '+n+' 🔑 هلأ اختاري صندوق!';
-};
+  window.tryKey=n=>{
+    key=n;
+    $('keyResult').textContent='اخترتي المفتاح '+n+' 🔑 هلأ اختاري صندوق!';
+  };
 
-window.tryBox=n=>{
-if(key===null){
-$('keyResult').textContent='اختاري مفتاح أول شي يا ماريا 😂🔑';
-return;
-}
+  window.tryBox=n=>{
+    if(key===null){
+      $('keyResult').textContent='اختاري مفتاح أول شي يا ماريا 😂🔑';
+      return;
+    }
 
-let r=$('keyResult');
+    let r=$('keyResult');
 
-if(key!==n){
-r.textContent='لااا يا ماريا 😂 هاد مو مفتاحك، جرّبي غيره! 🔑';
-key=null;
-return;
-}
+    if(key!==n){
+      r.textContent='لااا يا ماريا 😂 هاد مو مفتاحك، جرّبي غيره! 🔑';
+      key=null;
+      return;
+    }
 
-if(opened[n]){
-r.textContent='هاد الصندوق انفتح من قبل ❤️';
-return;
-}
+    if(opened[n]){
+      r.textContent='هاد الصندوق انفتح من قبل ❤️';
+      return;
+    }
 
-opened[n]=true;
-r.innerHTML=`🎉 فتحتي الصندوق ${n}!<br>${boxes[n-1]}`;
+    opened[n]=true;
+    r.innerHTML=`🎉 فتحتي الصندوق ${n}!<br>${boxes[n-1]}`;
 
-document.querySelectorAll('.box').forEach(b=>{
-if(b.textContent.includes('صندوق '+n)){
-b.textContent='💖 صندوق مفتوح';
-}
-});
+    document.querySelectorAll('.box').forEach(b=>{
+      if(b.textContent.includes('صندوق '+n)){
+        b.textContent='💖 صندوق مفتوح';
+      }
+    });
 
-key=null;
-};
+    key=null;
+  };
 }
 </script>
+
+</body>
+</html>
