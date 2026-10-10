@@ -1,370 +1,418 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>طارق وماريا ❤️</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>طارق ❤️ ماريا</title>
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(145deg, #240b24, #701c45, #190d28);
-  color: white;
-  text-align: center;
-  min-height: 100vh;
-}
-
-header {
-  padding: 45px 15px 25px;
-}
-
-h1 {
-  font-size: 36px;
-  color: #ffb6d5;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  color: #ffe0ec;
-  font-size: 17px;
-}
-
-.heart {
-  font-size: 48px;
-  animation: beat 1s infinite alternate;
-}
-
-@keyframes beat {
-  to { transform: scale(1.15); }
-}
-
-section {
-  background: rgba(255,255,255,0.09);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 22px;
-  padding: 22px 16px;
-  margin: 20px auto;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 8px 25px #0003;
-}
-
-h2 {
-  color: #ffb6d5;
-}
-
-.counter {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.time-box {
-  background: #ffffff18;
-  border-radius: 12px;
-  padding: 14px 8px;
-  min-width: 75px;
-}
-
-.time-box strong {
-  display: block;
-  color: #ffb6d5;
-  font-size: 25px;
-  margin-bottom: 5px;
-}
-
-input, button {
-  font-size: 16px;
-  border-radius: 12px;
-  padding: 12px;
-  margin: 7px 0;
-  border: none;
-}
-
-input {
-  max-width: 100%;
-  color: #44203a;
-}
-
-button {
-  background: #ff77ae;
-  color: #351126;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #ffc0da;
-}
-
-.photo-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.photo-box {
-  background: #ffffff12;
-  border: 1px dashed #ffb6d5;
-  border-radius: 15px;
-  padding: 12px 5px;
-  min-width: 0;
-}
-
-.photo-box img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-  display: none;
-}
-
-.photo-box input {
-  width: 100%;
-  font-size: 12px;
-}
-
-.small {
-  color: #f8d9e7;
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-#question {
-  font-size: 19px;
-  line-height: 1.7;
-}
-
-#gameResult {
-  color: #ffb6d5;
-  line-height: 1.8;
-}
-
-footer {
-  padding: 25px 10px;
-  color: #f8c7dd;
-}
+:root{--pink:#ff6b9d;--deep:#6f2348;--glass:rgba(255,255,255,.88)}
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;color:#632746;background:linear-gradient(135deg,#fff0f5,#ffe0eb,#fff8fb);min-height:100vh}
+header{text-align:center;padding:35px 14px 20px}
+h1{font-size:clamp(2rem,8vw,3.5rem);margin:8px 0;color:#b82f68;text-shadow:0 3px 12px #ffc2d5}
+header p{margin:8px}
+.counter{display:inline-block;background:#fff9;padding:12px 18px;border-radius:18px;box-shadow:0 5px 18px #d65b8822}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:10px}
+button,.navbtn{font:inherit;border:0;border-radius:14px;padding:11px 14px;background:#d94d83;color:white;cursor:pointer;box-shadow:0 4px 10px #8d245022}
+button:hover{filter:brightness(1.05)}
+.navbtn{background:#fff;color:#a82e63;border:1px solid #ffd0e0}
+.page{display:none;max-width:850px;margin:10px auto;padding:16px}
+.page.active{display:block}
+.card{background:var(--glass);border:1px solid #ffd0e0;border-radius:22px;padding:20px;margin:14px 0;box-shadow:0 8px 28px #a92b6012;backdrop-filter:blur(5px)}
+h2{color:#ba376c;margin-top:0}
+.storytext{font-size:1.08rem;line-height:2;white-space:pre-line}
+.muted{color:#9b6680}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.row button{flex:1;min-width:110px}
+.choice{display:block;width:100%;margin:8px 0;text-align:right;background:#fff0f6;color:#76294c;border:1px solid #f8b9d0;box-shadow:none}
+.choice:hover{background:#ffdce9}
+.result{background:#fff0f6;border-radius:14px;padding:14px;margin-top:12px;line-height:1.9}
+.heart-bg{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:-1}
+.heartphoto{position:absolute;width:75px;height:75px;object-fit:cover;opacity:.23;clip-path:path('M 37 68 C 30 59 4 43 5 24 C 6 7 27 2 37 19 C 48 2 69 7 70 24 C 71 43 45 59 37 68 Z');filter:saturate(.8)}
+.heartemoji{position:absolute;color:#f58ab0;opacity:.25;font-size:24px;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px) rotate(8deg)}}
+.boxgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.box{padding:20px 8px;background:#fff0f6;color:#a82e63;border:1px solid #f8b9d0}
+.small{font-size:.9rem}
+.hidden{display:none!important}
+footer{text-align:center;padding:30px;color:#b85b82}
+.photo-note{font-size:.9rem;color:#96617b}
 </style>
 </head>
-
 <body>
 
+<div class="heart-bg" id="heartBg"></div>
+
 <header>
-  <div class="heart">❤️</div>
-  <h1>طارق & ماريا</h1>
-  <p class="subtitle">قصتنا الحلوة... ولسه أحلى أيامنا جاية 💕</p>
+<div style="font-size:2rem">💗 🥹 💗</div>
+<h1>طارق ❤️ ماريا</h1>
+<p>حكايتنا الصغيرة، وأحلى شي صار بحياتي</p>
+<div class="counter" id="counter">كل يوم معك إلو معنى ❤️</div>
 </header>
 
-<section>
-  <h2>⏳ صارلنا سوا</h2>
-  <p>كل ثانية معك إلها معنى ❤️</p>
+<nav>
+<button class="navbtn" onclick="showPage('home')">الرئيسية 🏠</button>
+<button class="navbtn" onclick="showPage('story')">قصتنا 📖</button>
+<button class="navbtn" onclick="showPage('daily')">رسالة اليوم 💌</button>
+<button class="navbtn" onclick="showPage('open')">افتحيني لما... 💗</button>
+<button class="navbtn" onclick="showPage('games')">ألعابنا 🎮</button>
+</nav>
 
-  <div class="counter">
-    <div class="time-box">
-      <strong id="days">0</strong>
-      يوم
-    </div>
-    <div class="time-box">
-      <strong id="hours">0</strong>
-      ساعة
-    </div>
-    <div class="time-box">
-      <strong id="minutes">0</strong>
-      دقيقة
-    </div>
-    <div class="time-box">
-      <strong id="seconds">0</strong>
-      ثانية
-    </div>
-  </div>
-
-  <p>اختاروا تاريخ بداية علاقتكم:</p>
-  <input type="date" id="startDate">
-  <br>
-  <button onclick="saveDate()">حفظ التاريخ ❤️</button>
-  <p class="small" id="dateMessage">اختاروا التاريخ الحقيقي لبداية علاقتكم.</p>
+<main>
+<section class="page active" id="home">
+<div class="card" style="text-align:center">
+<h2>أهلاً بماريتي ❤️</h2>
+<p class="storytext">هالمكان إلك وإلي، حطّيت فيه شوية من حكايتنا وضحكتنا وذكرياتنا.
+كل ما تفتحيه تذكّري إنك غالية عليي كتير يا روحي 🥹❤️</p>
+<p class="photo-note">الصور الصغيرة بالخلفية بتظهر بعد رفع ملفات صوركم للموقع.</p>
+<button onclick="showPage('games')">يلا نلعب سوا 🎮</button>
+</div>
 </section>
 
-<section>
-  <h2>📸 ذكرياتنا</h2>
-  <p>كل صورة إلها حكاية ما بينساها القلب.</p>
-
-  <div class="photo-grid">
-    <div class="photo-box">
-      <img id="photo1" alt="صورتنا الأولى">
-      <p>صورتنا الأولى ❤️</p>
-      <input type="file" accept="image/*" onchange="previewPhoto(event, 'photo1')">
-    </div>
-
-    <div class="photo-box">
-      <img id="photo2" alt="أحلى ذكرى">
-      <p>أحلى ذكرى 💕</p>
-      <input type="file" accept="image/*" onchange="previewPhoto(event, 'photo2')">
-    </div>
-  </div>
-
-  <p class="small">اختاروا الصور من أجهزتكم لمشاهدتها على هالصفحة.</p>
+<section class="page" id="story">
+<div class="card">
+<h2>قصتنا من البداية 📖❤️</h2>
+<p class="muted">كل صفحة لحالها، متل ما عشناها.</p>
+<div id="storyContent" class="storytext"></div>
+<div class="row" style="margin-top:18px">
+<button onclick="storyMove(-1)">السابق</button>
+<button onclick="storyMove(1)">الصفحة التالية ❤️</button>
+</div>
+<p id="storyNum" class="muted"></p>
+</div>
 </section>
 
-<section>
-  <h2>🎮 لعبة مين بيعرف التاني أكتر؟</h2>
-  <p id="question">مين الشخص اللي عمل هالموقع بكل حب؟ 😏</p>
-
-  <div id="answers">
-    <button onclick="answer('طارق')">طارق ❤️</button>
-    <button onclick="answer('ماريا')">ماريا 🌸</button>
-  </div>
-
-  <p id="gameResult"></p>
-  <button onclick="nextQuestion()">السؤال التالي 💗</button>
+<section class="page" id="daily">
+<div class="card">
+<h2>كل يوم إلك رسالة 💌</h2>
+<p id="dailyMessage" class="storytext"></p>
+<p class="muted small">رسالة اليوم بتتغير حسب التاريخ ❤️</p>
+</div>
 </section>
 
-<section>
-  <h2>💌 رسالة إلك يا ماريا</h2>
-  <p style="line-height:2">
-    يا ماريا، يمكن المسافات تبعدنا عن بعض،
-    بس في أشياء ما بتقيسها المسافات.
-    <br>
-    وجودك بحياتي إلو مكان خاص،
-    وكل ذكرى حلوة بيناتنا بتعنيلي كتير.
-    <br>
-    <strong style="color:#ffb6d5">من طارق إلك، بكل حب ❤️</strong>
-  </p>
+<section class="page" id="open">
+<div class="card">
+<h2>افتحيني لما... 💗</h2>
+<p>اختاري اللي حاسّة فيه يا ماريتي.</p>
+<div id="openButtons" class="row"></div>
+<div id="openMessage" class="result hidden"></div>
+</div>
 </section>
 
-<footer>
-  صُنع بكل الحب ❤️ طارق & ماريا
-</footer>
+<section class="page" id="games">
+<div class="card">
+<h2>ألعابنا سوا 🎮❤️</h2>
+<div class="row">
+<button onclick="startMemory()">اختبر ذاكرتك بعلاقتنا</button>
+<button onclick="startKnow()">قديش بتعرفيني؟</button>
+<button onclick="startWho()">مين فينا؟</button>
+<button onclick="startSurprise()">اختاري رقم واكتشفي المفاجأة</button>
+<button onclick="startKeys()">اختاري المفتاح 🔑</button>
+</div>
+</div>
+<div id="gameArea"></div>
+</section>
+</main>
+
+<footer>طارق ❤️ ماريا — حكايتنا لسا عم تكبر</footer>
 
 <script>
-const dateInput = document.getElementById("startDate");
-const dateMessage = document.getElementById("dateMessage");
+// تاريخ بداية علاقتكم: 16 أيار 2026
+const START_DATE = '2026-05-16';
 
-function saveDate() {
-  if (!dateInput.value) {
-    dateMessage.textContent = "اختار التاريخ أولاً ❤️";
-    return;
-  }
+// أسماء الصور التي سترفعها إلى مجلد photos داخل GitHub
+const PHOTOS = ['photos/us1.jpg','photos/us2.jpg','photos/us3.jpg'];
 
-  const chosen = new Date(dateInput.value + "T00:00:00");
+const $=id=>document.getElementById(id);
 
-  if (chosen > new Date()) {
-    dateMessage.textContent = "اختاروا تاريخ اليوم أو تاريخ أقدم ❤️";
-    return;
-  }
-
-  localStorage.setItem("ourStartDate", dateInput.value);
-  dateMessage.textContent = "انحفظ تاريخكم ❤️";
-  updateCounter();
+function showPage(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+$(id).classList.add('active');
+if(id==='daily')daily();
+if(id==='open')renderOpen();
+window.scrollTo({top:0,behavior:'smooth'});
 }
 
-const savedDate = localStorage.getItem("ourStartDate");
-
-if (savedDate) {
-  dateInput.value = savedDate;
+function updateCounter(){
+let start=new Date(START_DATE+'T00:00:00');
+let diff=Math.max(0,Date.now()-start.getTime());
+let days=Math.floor(diff/86400000);
+$('counter').textContent=`صارلنا ${days} يوم سوا ❤️ وكل يوم إنتِ أغلى`;
 }
-
-function updateCounter() {
-  const value = localStorage.getItem("ourStartDate");
-
-  if (!value) return;
-
-  const start = new Date(value + "T00:00:00");
-  const now = new Date();
-  let diff = now - start;
-
-  if (diff < 0) return;
-
-  const totalSeconds = Math.floor(diff / 1000);
-  document.getElementById("days").textContent =
-    Math.floor(totalSeconds / 86400);
-  document.getElementById("hours").textContent =
-    Math.floor((totalSeconds % 86400) / 3600);
-  document.getElementById("minutes").textContent =
-    Math.floor((totalSeconds % 3600) / 60);
-  document.getElementById("seconds").textContent =
-    totalSeconds % 60;
-}
-
-setInterval(updateCounter, 1000);
 updateCounter();
+setInterval(updateCounter,60000);
 
-function previewPhoto(event, id) {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  const image = document.getElementById(id);
-  image.src = URL.createObjectURL(file);
-  image.style.display = "block";
+function makeBackground(){
+let bg=$('heartBg');
+PHOTOS.forEach((src,i)=>{
+let im=document.createElement('img');
+im.src=src;
+im.className='heartphoto';
+im.style.left=(5+(i*29)%86)+'%';
+im.style.top=(8+(i*23)%78)+'%';
+im.onerror=()=>im.remove();
+bg.appendChild(im);
+});
+for(let i=0;i<12;i++){
+let h=document.createElement('span');
+h.className='heartemoji';
+h.textContent='♥';
+h.style.left=(Math.random()*95)+'%';
+h.style.top=(Math.random()*95)+'%';
+h.style.animationDelay=(Math.random()*5)+'s';
+bg.appendChild(h);
 }
+}
+makeBackground();
 
-const questions = [
-  {
-    q: "مين الشخص اللي عمل هالموقع بكل حب؟ 😏",
-    a: ["طارق ❤️", "ماريا 🌸"],
-    correct: 0
-  },
-  {
-    q: "شو أحلى شي ممكن نعمله سوا؟ 💕",
-    a: ["نخلق ذكريات حلوة ❤️", "نتخانق عالفاضي 😂"],
-    correct: 0
-  },
-  {
-    q: "شو أهم شي بين شخصين بيحبوا بعض؟ 🥹",
-    a: ["الثقة والاهتمام ❤️", "العناد طول الوقت 😅"],
-    correct: 0
-  },
-  {
-    q: "مين لازم يضل يهتم بالتاني؟ 💗",
-    a: ["طارق بس 😜", "الاتنين سوا ❤️"],
-    correct: 1
-  }
+const story=[
+['أول حكايتنا','بالبداية شفت صورتك مع شب، وصار موقف وقتها وأنا عصّبت وحكيت عن الشب بطريقة مو حلوة، وإنتِ زعلتي وعملتِلي بلوك. وقتها ما كنت بعرف إنو هالموقف رح يكون أول سطر بحكاية طويلة بيناتنا. ❤️'],
+['رجعة الحكي','بعد سنة تقريباً رجعنا نحكي بقروبات، وضَلّينا حوالي سبع شهور نحكي ونشوف أخبار بعض. يمكن وقتها ما كنت متخيّل لوين ممكن توصل حكايتنا، بس وجودك بلّش ياخد مكان بقلبي.'],
+['غياب ورجعة','بعد هالفترة وقف الحكي بيناتنا، ومرقوا سبع شهور تانيين من دون تواصل. وبعدين فجأة بعتّيلي عالواتساب، ورجع باب الحكي ينفتح من جديد.'],
+['لما شفتك بالكشك','بعد فترة شفتك بالكشك، وطلعنا مشوار صغير وحكينا بشكل عادي كأصحاب. يمكن كان مشوار بسيط، بس بالنسبة إلي كان خطوة حلوة قرّبتني منك أكتر.'],
+['لما نمتي على كتفي','بواحد من طلعاتنا كنتِ نعسانة، وغفيتي على كتفي. يمكن إنتِ صحيتي وكمّلتي عادي، بس أنا حسّيت وقتها بشعور ما بنساه؛ قلبي دق بسرعة وحسّيت كأنها أول حضنة إلي منك، حتى لو ما كانت حضنة فعلية. ومن وقتها تعلّقت فيكي أكتر. ❤️'],
+['أول كافيه','أول كافيه قعدنا فيه كان بساحة السبع بحرات. ما عاد بتذكّر تفاصيل القعدة كتير، بس بتذكّر إنك كنتِ كتير حلوة، وهاد الشي لحاله ضلّ بذاكرتي. 😂❤️'],
+['صرنا أقرب','شوي شوي صرنا أقرب، وصار الحكي بيناتنا غير عن قبل. أنا اعترفتلك بحبي أول، ومع الوقت بلّشتي إنتِ كمان تعبّريلي عن مشاعرك، وصار في شي حلو عم يكبر بيناتنا.'],
+['لما صرتِ بدك تضمّيني','أكتر لحظة حسّستني بحبك كانت لما صرتِ إنتِ كمان بدك تضمّيني. وقتها حسّيت إنو مشاعري مو بس من طرفي، وإنو في حنية منك عم توصلني بطريقتك. 🥹❤️'],
+['خوفي مو من الحب، خوفي من خسارتك','مع كل هالقرب، لسا أوقات بخاف تخسرني الأيام ياكي أو تبعدي فجأة. بدي حس إننا رح نتمسّك ببعض ونحاول كرمال علاقتنا. وأكتر شي بتمناه إني ضمك، وبوسك على راسك، وقلّك قدّيش بحبك وأنا حدك. بحبك يا ماريتي. ❤️']
 ];
 
-let currentQuestion = 0;
+let storyIndex=0;
+function renderStory(){
+$('storyContent').textContent=story[storyIndex][0]+'\n\n'+story[storyIndex][1];
+$('storyNum').textContent=`الصفحة ${storyIndex+1} من ${story.length}`;
+}
+function storyMove(n){
+storyIndex=Math.max(0,Math.min(story.length-1,storyIndex+n));
+renderStory();
+}
+renderStory();
 
-function showQuestion() {
-  const q = questions[currentQuestion];
+const dailyMessages=[
+'يا ماريتي، وجودك بحياتي من أحلى الأشياء اللي صارت معي، بحبك كتيررر ❤️',
+'يا روحي، لو فيني هلأ كنت جيت لعندك وضلّيت حدك وما خليتك تشتاقي 🥹❤️',
+'ماريااا، بتمنى يومك يكون حلو قد قلبك، وتضلي تضحكي هيك دايماً ❤️',
+'بس حبيت ذكّرك إنك غالية عليي كتير، وإنو كل يوم بحبك أكتر يا ماريتي 💗',
+'نفسي أعيش معك تفاصيل صغيرة كتير، ضحكة ومشوار وحكي ما يخلص. بحبك ❤️',
+'يا ماريا، حتى لو ما كنت حدك هلأ، إنتِ ببالي وقلبي. الله يخليلي ياكي يا روحي 🥹'
+];
 
-  document.getElementById("question").textContent = q.q;
-  document.getElementById("gameResult").textContent = "";
-
-  document.getElementById("answers").innerHTML = q.a.map(
-    (text, index) =>
-      `<button onclick="checkAnswer(${index})">${text}</button>`
-  ).join("");
+function daily(){
+let d=new Date();
+let n=Math.floor((new Date(d.getFullYear(),d.getMonth(),d.getDate())-new Date(2024,0,1))/86400000);
+$('dailyMessage').textContent=dailyMessages[((n%dailyMessages.length)+dailyMessages.length)%dailyMessages.length];
 }
 
-function checkAnswer(index) {
-  const q = questions[currentQuestion];
-  const result = document.getElementById("gameResult");
+const openItems=[
+['لما تكوني زعلانة','يا ماريا يا روحي، مابعرف شو مضايقك هلأ بس بتمنى لو كنت حدك لضمك وخليكي تنسي كل شي مزعلك. احكيلي اللي بقلبك وما تخبي عني شي، أنا هون كرمالك يا ماريتي ❤️'],
+['لما تشتاقيلي','يا ماريتييي، والله لو بإيدي كنت هلأ عندك وضمّيتك وما تركتك، اشتقتلك حتى وإنتِ مو قدامي، شو بدي ساوي فيكي أنا بحبك كتيررر 🥹❤️'],
+['قبل ما تنامي','تصبحي على خير يا ماريتي، نوم الهنا وأحلامك انا 😂❤️ وبوسيلي خدودك لحلوين، وبحبككك يا روحي 🥹❤️'],
+['لما بدك تسمعي قديش بحبك','ماريااا بحبك بحبك بحبك، والله ما بتعرفي قديش إنتِ غالية عليي، بدي ضمك وقلك بحبك لحتى تزهقي مني 😂❤️ يا رب ضل شوفك مبسوطة وتضلي بحياتي.'],
+['لما تحسي إني بعيد عنك','يا ماريتي حتى لو كنت بعيد عنك، إنتِ ببالي وقلبي، وإذا قصّرت معك بشي احكيلي وما تخبي بقلبك، ما بدي المسافة ولا الزعل يخلّونا نبعد عن بعض، بحبك يا روحي ❤️'],
+['لما تحسي إنو ما حدا فاهمك','يا ماريا، تعي احكيلي شو بقلبك، حتى لو ما عرفتي كيف تشرحيلي، رح حاول افهمك وأسمعك، مو ضروري تكوني منيحة طول الوقت، بحبك بكل حالاتك يا روحي ❤️']
+];
 
-  if (index === q.correct) {
-    result.textContent = "جواب حلو ❤️ بتعرفوا شو المهم!";
-  } else {
-    result.textContent = "هههه جرّبوا مرة تانية 😜💕";
-  }
+function renderOpen(){
+$('openButtons').innerHTML='';
+openItems.forEach((x,i)=>{
+let b=document.createElement('button');
+b.textContent=x[0];
+b.onclick=()=>{
+$('openMessage').classList.remove('hidden');
+$('openMessage').innerHTML='<b>'+x[0]+' ❤️</b><br>'+x[1];
+};
+$('openButtons').appendChild(b);
+});
 }
 
-function answer(name) {
-  document.getElementById("gameResult").textContent =
-    name === "طارق"
-      ? "صح! طارق عمل الموقع لماريا بكل حب ❤️"
-      : "هههه ماريا، هالمرة طارق هو اللي عمل الموقع 😜❤️";
+const memory=[
+['مين اعترف بالحب أول؟',['طارق','ماريا','الاثنين سوا','ولا واحد'],'طارق'],
+['وين أول مكان التقينا فيه بعد ما رجعنا نحكي؟',['الكشك','السينما','الجامعة','ساحة السبع بحرات'],'الكشك'],
+['وين كان أول كافيه قعدنا فيه؟',['باب توما','ساحة السبع بحرات','المزة','الحميدية'],'ساحة السبع بحرات'],
+['مين بادر وبعت أول رسالة لما تعرفنا على بعض؟',['طارق','ماريا','صديق مشترك','ما حدا'],'ماريا'],
+['شو كان أول انطباع أخدناه عن بعض؟',['حب من أول نظرة','ما حبينا بعض','صرنا أصحاب فوراً','ما منتذكر'],'ما حبينا بعض'],
+['مين تعلّق بالتاني قبل؟',['طارق','ماريا','بنفس الوقت','ولا واحد'],'ماريا'],
+['شو أول لقب دلع صار واحد فينا ينادي فيه التاني؟',['ماريتي','روحي','قلبي','قمري'],'ماريتي'],
+['شو أول هدية أعطى واحد فينا للتاني؟',['وردة','بالون','سوار','دبدوب'],'بالون'],
+['شو أكتر ذكرى منحب نرجع نعيشها من جديد؟',['أول رسالة','السينما','أول كافيه','أول مكالمة'],'السينما']
+];
+
+const know=[
+['شو أكتر صفة بتميز طارق؟',['الحنية','العصبية','الهدوء','العناد'],'الحنية'],
+['كيف بيتصرف طارق لما يكون زعلان؟',['بيحكي فوراً','بيسكت وبيحتفظ بمشاعره','بيضحك','بيغيّر الموضوع'],'بيسكت وبيحتفظ بمشاعره'],
+['شو أكتر شي ممكن يفرّح طارق؟',['هدية غالية','رسالة حلوة من شخص بيحبه','طلعة لحاله','لعبة جديدة'],'رسالة حلوة من شخص بيحبه'],
+['شو أكتر شي بيستفز طارق؟',['التأخير','الصوت العالي','عدم الاهتمام','الاختلاف'],'عدم الاهتمام'],
+['كيف بيعبّر طارق عن حبه؟',['بالهدايا فقط','بالكلام الحلو والغزل','بالسكوت','بالمفاجآت فقط'],'بالكلام الحلو والغزل'],
+['شو أكتر شي بيهم طارق بالعلاقة؟',['الهدايا','الاهتمام','الطلعات','التصوير'],'الاهتمام'],
+['شو أكتر شي ممكن يزعّل طارق بعلاقته مع ماريا؟',['قلة الطلعات','اختلاف الذوق','إنها ما تهتم فيه','قلة الصور'],'إنها ما تهتم فيه'],
+['شو أكتر شي بيحب طارق يسمعه من ماريا؟',['اشتقتلك','إنت مضحك','شو بدنا ناكل؟','أنا معك وما رح اتركك تواجه شي لحالك'],'أنا معك وما رح اتركك تواجه شي لحالك'],
+['شو أكتر شي بيحب طارق يعمله مع ماريا؟',['يلعب لحاله','يتفرج على التلفزيون','يتسوق','يصنع معها ذكريات حلوة'],'يصنع معها ذكريات حلوة'],
+['شو الأمنية اللي بيتمناها طارق بخصوص علاقته مع ماريا؟',['يسافر لحاله','يشتري سيارة','يعيش بلا مسؤولية','يبنوا مستقبل يناسبهم التنين'],'يبنوا مستقبل يناسبهم التنين'],
+['إذا اختلفوا على فيلم، شو بيصير؟',['طارق بيختار','ماريا بتختار الفيلم','ما بيتفرجوا','بيختاروا عشوائي'],'ماريا بتختار الفيلم'],
+['شو أكتر شي بيهتم فيه طارق بالهدية؟',['السعر','الحجم','الفكرة والمشاعر وراها','اللون'],'الفكرة والمشاعر وراها'],
+['كيف بيحب يقضي يوم فاضي؟',['يقضيه مع ماريا','ينام طول اليوم','يلعب لحاله','يشتغل'],'يقضيه مع ماريا'],
+['مين بيحب المفاجآت أكتر؟',['طارق','ماريا','الاثنين نفس الشي','ولا واحد'],'طارق'],
+['إذا صار مع طارق خبر حلو، مين بيخبر أول؟',['صاحبه','أهله','ما بيخبر حدا','ماريا'],'ماريا']
+];
+
+const whoQ=[
+'مين فينا بيغار أكتر؟',
+'مين فينا بيراضي التاني أول بعد الزعل؟',
+'مين فينا بيزعل أسرع؟',
+'مين فينا بيعاند أكتر؟',
+'مين فينا بيضحك بوقت مو مناسب؟',
+'مين فينا بيحب يدلع التاني أكتر؟',
+'مين فينا بيبلّش المشاكل وبعدين بيقول مو أنا؟ 😂',
+'مين فينا بيشتاق للتاني أسرع؟',
+'مين فينا بيحب المفاجآت أكتر؟',
+'مين فينا بيقدر يضل زعلان وقت أطول؟',
+'مين فينا بيعبّر عن مشاعره أكتر؟',
+'مين فينا بيتذكر التفاصيل الصغيرة أكتر؟',
+'مين فينا بيحب يسمع كلام حلو أكتر؟',
+'مين فينا بيخطط لمستقبلنا أكتر؟',
+'مين فينا بيحب يحتفظ بالذكريات والصور أكتر؟',
+'مين فينا بيبادر ليحكي مع التاني أكتر؟',
+'مين فينا بيلاحظ تغيّر مزاج التاني أسرع؟',
+'مين فينا بيحب المفاجآت الرومانسية أكتر؟',
+'مين فينا بيحلم باليوم اللي نجتمع فيه أكتر؟',
+'مين فينا بيعبّر عن اشتياقه بطريقة أحلى؟',
+'مين فينا بيكتم زعله وما بيحكي؟',
+'مين فينا بيهتم بالتفاصيل أكتر؟',
+'مين فينا بيغيّر رأيه أسرع؟',
+'مين فينا بيحب يخطط لكل شي مسبقاً؟',
+'مين فينا بيضحك التاني لما يكون زعلان؟',
+'مين فينا بيتذكر المواقف القديمة أكتر؟',
+'مين فينا بيحب الطلعات والمغامرات أكتر؟',
+'مين فينا بيعتذر لما يعرف إنه غلطان؟',
+'مين فينا بيعرف شو مضايق التاني بدون ما يحكي؟'
+];
+
+const whoA=[1,1,2,2,2,1,2,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,2,1,2,1,1,1,1];
+
+function area(){return $('gameArea')}
+function resetGame(title){
+area().innerHTML=`<div class="card"><h2>${title}</h2><div id="play"></div></div>`;
 }
 
-function nextQuestion() {
-  currentQuestion = (currentQuestion + 1) % questions.length;
-  showQuestion();
+function startQuiz(title,arr){
+resetGame(title);
+let i=0,score=0,answers=[];
+function draw(){
+let p=$('play');
+if(i>=arr.length){
+p.innerHTML=`<h3>خلصنا! ❤️</h3>
+<p>نتيجتك: ${score} من ${arr.length} (${Math.round(score/arr.length*100)} من 100)</p>
+<div class="result">${arr.map((q,j)=>`${j+1}. ${q[0]}<br>الإجابة الصحيحة: <b>${q[2]}</b>${answers[j]===q[2]?' ✅':' ❌'}`).join('<br><br>')}</div>
+<button onclick="startMemory()">إعادة اللعبة</button>`;
+return;
+}
+let q=arr[i];
+p.innerHTML=`<p>السؤال ${i+1} من ${arr.length}</p><h3>${q[0]}</h3>`+
+q[1].map(a=>`<button class="choice" onclick="answerQuiz(${JSON.stringify(a).replace(/'/g,"\\'")})">${a}</button>`).join('');
+window.answerQuiz=a=>{
+answers[i]=a;
+if(a===q[2])score++;
+i++;
+draw();
+};
+}
+draw();
+}
+function startMemory(){startQuiz('اختبر ذاكرتك بعلاقتنا ❤️',memory)}
+function startKnow(){startQuiz('قديش بتعرفيني؟ 💗',know)}
+
+function startWho(){
+resetGame('مين فينا؟ ❤️');
+let i=0,ans=[];
+function draw(){
+let p=$('play');
+if(i>=whoQ.length){
+p.innerHTML='<h3>خلصتوا! شوفوا إجاباتكم ❤️</h3>'+
+whoQ.map((q,j)=>`${j+1}. ${q}<br>اختياركم: <b>${ans[j]===1?'طارق ❤️':'ماريا 🌸'}</b>`).join('<br><br>')+
+'<button onclick="startWho()">إعادة اللعبة</button>';
+return;
+}
+p.innerHTML=`<p>السؤال ${i+1} من ${whoQ.length}</p><h3>${whoQ[i]}</h3><button onclick="pick(1)">طارق ❤️</button> <button onclick="pick(2)">ماريا 🌸</button>`;
+window.pick=n=>{ans.push(n);i++;draw()};
+}
+draw();
+}
+
+const surprises=[
+'بحب بوس خدودك كتير 🥹❤️',
+'شعراتك كتير حلوين عفكرة 😭❤️',
+'بحب عيونك السود 🖤',
+'عطيني بوسة 😚',
+'قومي نطلع سوا ❤️',
+'خدودك حلوين لما تضحكي 🥹',
+'لو رجع فيني الزمن رح اختارك إنت كمان مرة ❤️',
+'ضحكتك بتساوي الدنيا كلها',
+'نفسي ضل دلعك يا ماريا 🥹',
+'تعالي لهون يا ماريا عندي كلام حب كتير إلك ❤️',
+'مهمتك هلأ تبعتيلي بوسة 😂💋',
+'اختاري موعد لطلعة سوا 🗓️',
+'لك شو بحبك أنا يا ماريتييي ❤️',
+'حضّريلي أحلى ضحكة عندك 😍',
+'تذكّري إنك أحلى صدفة بحياتي 💗'
+];
+
+function startSurprise(){
+resetGame('اختاري رقم واكتشفي المفاجأة 💌');
+let nums=[...Array(15)].map((_,i)=>i+1).sort(()=>Math.random()-.5);
+$('play').innerHTML='<p>اختاري رقم واحد، وكل رقم إلو مفاجأة مخبّاية 💗</p><div class="boxgrid">'+
+nums.map(n=>`<button class="box" onclick="reveal(${n})">💗 ${n}</button>`).join('')+
+'</div><div id="surpriseResult" class="result hidden"></div>';
+window.reveal=n=>{
+let r=$('surpriseResult');
+r.classList.remove('hidden');
+r.innerHTML=`${surprises[n-1]}<br><span style="font-size:1.5rem">💗❤️💗</span>`;
+};
+}
+
+const boxes=[
+'بحبك وبحب عيونك الحلوين وياريت ماتتركيني اني مافيني عيش بدونك ابداً وياريت تضلي جنبي عطول',
+'بعتيلي بوسة بفويسس هلققق 😚',
+'بحب لما ضميتك اول مرة ومابنسا شو حسيت وقتا كان احلا احساس بحسو بحياتي وقد ماحسيت شغلات حلوة بحياتي مارح حس نفس هالاحساس بحبك وياريت تضميني كتير ❤️',
+'بدي نتزوج ونجيب كرم وماريا 🥹❤️',
+'🖕🏾😂'
+];
+
+function startKeys(){
+resetGame('اختاري المفتاح 🔑');
+let order=[1,2,3,4,5].sort(()=>Math.random()-.5);
+$('play').innerHTML='<p>كل صندوق إلو مفتاح محدد. جرّبي المفاتيح لحتى تفتحي الصندوق الصح! 🔑</p><div class="boxgrid">'+
+order.map(n=>`<button class="box" onclick="tryBox(${n})">🔒 صندوق ${n}</button>`).join('')+
+'</div><p>المفاتيح:</p><div class="boxgrid">'+
+[1,2,3,4,5].map(n=>`<button class="choice" onclick="tryKey(${n})">🔑 مفتاح ${n}</button>`).join('')+
+'</div><div id="keyResult" class="result">اختاري مفتاح وبعدين صندوق.</div>';
+let key=null,opened={};
+window.tryKey=n=>{
+key=n;
+$('keyResult').textContent='اخترتي المفتاح '+n+' 🔑 هلأ اختاري صندوق!';
+};
+window.tryBox=n=>{
+if(key===null){
+$('keyResult').textContent='اختاري مفتاح أول شي يا ماريا 😂🔑';
+return;
+}
+let r=$('keyResult');
+if(key!==n){
+r.textContent='لااا يا ماريا 😂 هاد مو مفتاحك، جرّبي غيره! 🔑';
+key=null;
+return;
+}
+if(opened[n]){
+r.textContent='هاد الصندوق انفتح من قبل ❤️';
+return;
+}
+opened[n]=true;
+r.innerHTML=`🎉 فتحتي الصندوق ${n}!<br>${boxes[n-1]}`;
+document.querySelectorAll('.box').forEach(b=>{
+if(b.textContent.includes('صندوق '+n))b.textContent='💖 صندوق مفتوح';
+});
+key=null;
+};
 }
 </script>
-
 </body>
 </html>
